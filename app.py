@@ -6,7 +6,7 @@ from datetime import datetime
 
 # Authenticate with Google Sheets
 scope = ["https://spreadsheets.google.com/feeds", 'https://www.googleapis.com/auth/drive']
-creds = ServiceAccountCredentials.from_json_keyfile_name("C:/Users/shaik/Downloads/questschool-45d52918c708.json", scope)
+creds = ServiceAccountCredentials.from_json_keyfile_dict(st.secrets["GOOGLE_CREDENTIALS"], scope)
 client = gspread.authorize(creds)
 sheet = client.open("hello").sheet1
 data = sheet.get_all_records()
